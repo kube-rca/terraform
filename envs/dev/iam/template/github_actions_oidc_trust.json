@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Principal": {
+        "Federated": "${oidc_provider_arn}"
+      },
+      "Condition": {
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "${audience}"
+        },
+        "StringLike": {
+          "token.actions.githubusercontent.com:sub": [
+            "repo:${org}/*:ref:refs/heads/*",
+            "repo:${org}/*:ref:refs/tags/*"
+          ]
+        }
+      }
+    }
+  ]
+}

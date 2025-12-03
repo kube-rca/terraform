@@ -1,5 +1,5 @@
 variable "aws_region" {
   type        = string
-  description = "Region for the private ECR repositories."
+  description = "Default AWS region for non-public resources."
   default     = "ap-northeast-2"
 }
